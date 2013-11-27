@@ -19,7 +19,9 @@ public class Verif {
     
     public void verifier(Ligne entree){ // Permet de voir la ligne et met à jour les marqueeurs en fonction
         for(int i=0; i < solution.getNbJeton(); i++){
-            
+            if(entree.getJetons(i).getColor().equals(solution.getJetons(i).getColor())){
+                
+            }
         }
     }
     
