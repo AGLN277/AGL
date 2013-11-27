@@ -10,10 +10,15 @@ package mastermind;
  *
  * @author Sylvio
  */
-public class IA {
+public class Verif {
+    private Ligne solution; // La ligne contenant la réponse : Les jetons entrés au debut de la partie
     
-    IA{
+    public Verif(Ligne solution){
+        this->solution = solution;
+    }
     
+    public verifier(){ // Permet de voir la ligne et 
+        
     }
     
 }
