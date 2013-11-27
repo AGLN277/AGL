@@ -8,8 +8,6 @@ public class main {
     public static void main (String[] args){
         System.out.print(" ===== MasterMind =====");
         
-        Plateau test = new Plateau();
-        
-        test.affichage();
+       
     }
 }
