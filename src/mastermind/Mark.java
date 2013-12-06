@@ -1,13 +1,15 @@
+package mastermind;
 
-
-public class Mark extends Piece {
+public class Mark{
+    String couleur;
     
-    private int position;
-    private Jeton jetonAssocie;
-    Mark(Couleur coul, Jeton jetonAssocie) {            
-        super(coul);
-        this.position=jetonAssocie.getPosition();
-        this.jetonAssocie=jetonAssocie;
-   
+    
+    Mark(String couleur, Jeton jetonAssocie) {            
+        this.couleur = couleur;
     }
+    
+    public String getCoulor(){
+        return couleur;
+    }
+    
 }

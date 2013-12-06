@@ -1,15 +1,20 @@
+package mastermind;
 
-public class Jeton extends Piece {
+
+public class Jeton {
+    String couleur;
+    Mark marqueurAssocie;
     
-    private int position;
-       
-    Jeton(Couleur coul, int position) {            
-        super(coul);
-        this.position=position;
-       }
+    Jeton(String couleur) {    // !!!! On utilise plus la classe couleur       
+        this.couleur = couleur;
+    }
     
-    public int getPosition() {
-    return position;
+    public Mark getMarqueur(){
+        return marqueurAssocie;
+    }
+    
+    public String getColor(){
+        return couleur;
     }
     
 }

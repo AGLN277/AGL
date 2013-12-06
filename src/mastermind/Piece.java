@@ -1,11 +1,11 @@
+package mastermind;
 
 public class Piece {
     
-    protected Couleur coul; 
+    protected String couleur; 
        
-    Piece(Couleur coul) {
-            
-        this.coul=coul;
+    Piece(String couleur) {
+            this.couleur=couleur;
         }
 }
 

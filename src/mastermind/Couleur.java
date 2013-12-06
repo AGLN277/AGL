@@ -1,3 +1,4 @@
+package mastermind;
 
 public class Couleur {
     
@@ -5,8 +6,8 @@ public class Couleur {
     private int numero;
     
         Couleur(String couleur,int numero) {
-            
-            this.couleur=couleur;
-            
+            this.couleur=couleur;  
         }
+        
+
 }
