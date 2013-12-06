@@ -66,7 +66,7 @@ class Mastermind {
    * @return true si la bonne combinaison est trouvée et false sinon
    */ 
   static boolean compare(int n, int[] combinaison1, int[] combinaison2,
-             int[] reponse) {
+    int[] reponse) {
     int nbCol = 0;
     int nbOk = 0;
     boolean [] marque = new boolean[n];
