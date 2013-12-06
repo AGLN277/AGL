@@ -4,6 +4,7 @@ package mastermind;
 public class Ligne {
     private char[] ligne;
     private int taille; 
+    private final char[] couleur={'R','V','J','B','O','G','M','P','C','T'};
     
     public Ligne (){
         generationLigne();
