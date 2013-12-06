@@ -1,16 +1,16 @@
 package mastermind;
 
 import java.util.Scanner;
-class Mastermind {
+class MastermindResolu {
     private static Scanner scanner = new Scanner(System.in);
 
   /**
    * Lancement du Master-Mind(tm)
    * @param args
    */
-  public static void main(String[] args) {
+ /* public static void main(String[] args) {
     mastermind(4, 6, 10);
-  }
+  }*/
 
   /**
    * Tirage d'un entier au hasard entre 1 et max
