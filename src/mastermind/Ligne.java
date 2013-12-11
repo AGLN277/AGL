@@ -11,7 +11,7 @@ public class Ligne {
       
     public Ligne( int taille, boolean generation){
         ligne = new char[taille];    
-        if( generation )
+        if(generation)
             generationLigne();
     }
     
@@ -19,29 +19,62 @@ public class Ligne {
         ligne = tab;
     }
     
-    public boolean[] compare ( Ligne comparant){
-        boolean[] tab = new boolean[taille];
-        for (int i=0; i< taille; i++){
-            if ( ligne[i] == comparant.ligne[i] )
-                tab[i] = true;
-            else
-                tab[i] = false;
+    public int[] compare ( Ligne comparant){
+        int[] verifTab = new int[taille]; // Ce tableau Si tab[i] = 1 : Bon et bien placé; Si tab[i] = 2 : Bon et mal placé; Si tab[i] = 0 : N'existe pas dans cette ligne
+        boolean[] existeTab = new boolean[taille]; // Ce tableau mettra true si la case correspondant à cet indice est présente. Ce tableau permet de ne pas compter plusieurs fois 
+        
+        for(int i=0; i < taille; i++){ // Initialise les tableaux
+            existeTab[i] = false;
+            verifTab[i] = 0;
         }
-      
-        return tab;
-        //tableau de boolean
+        
+        
+        for (int i=0; i < taille; i++){ // On test d'abord si les pions sont bien placés
+            if ( ligne[i] == comparant.ligne[i] ){
+                verifTab[i] = 1; // Si la pièce est bien placée et de bonne couleur
+                existeTab[i] = true;
+            }
+        }
+        
+        // On regarde les éléments existant et mal placés
+        for(int i=0; i < taille; i++){
+            if(verifTab[i] != 1){ // Si la pièce n'est pas déjà bien placée
+                for(int j=0; j < taille && verifTab[i] != 2; j++){ // Tant que le tableau n'est pas fini et qu'on a pas trouvé cette couleur dans le tableau 
+                    if(comparant.ligne[i] == ligne[j] && existeTab[j] == false){ // Si une couleur est la même dans les 2 lignes et qu'elle n'a pas déjà été donné
+                        existeTab[j] = true;
+                        verifTab[i] = 2; // On dit que la pièce existe mais mal placée
+                    }
+                }
+            }
+        }
+        return verifTab;
     }
     
-  /**
+    
+    // Renvoie true si le tableau contient que des 1
+    // Attention, c'est une méthode statique
+    @SuppressWarnings("empty-statement")
+    public static boolean tabEstVrai(int[] tab){
+        int i;
+        for(i=0; i < tab.length && tab[i] == 1; i++);
+        
+        return (i >= tab.length); // On à trouvé aucun false
+    }
+    
+   
+   /**
    * Permet de générer une ligne aléatoire.
    * @return true si la bonne combinaison est trouvée et false sinon
    */ 
-    private void generationLigne(){
+     private void generationLigne(){
         for (int i= 0; i<taille; i++){
             Random rand = new Random();
             int nombreAleatoire = rand.nextInt(MAX - MIN + 1) + MIN;
             ligne[i] = couleur[nombreAleatoire];
         }
     }
-    
 }
+    
+
+   
+ 
