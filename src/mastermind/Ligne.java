@@ -7,7 +7,7 @@ public class Ligne {
     private char[] ligne;
     private int taille; 
     private final int MIN = 0, MAX=10;
-    private final char[] couleur={'R','V','J','B','O','G','M','P','C','T'};
+    private final char[] couleur={'R','V','J','B','O','G','M','P','C','T','P','N'};
       
     public Ligne( int taille, boolean generation){
         ligne = new char[taille];    
