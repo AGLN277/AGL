@@ -13,15 +13,28 @@ public class Ligne {
         ligne = new char[taille];    
         if(generation)
             generationLigne();
+        this.taille = taille;
     }
     
     public void setLigne( char[] tab){
         ligne = tab;
     }
     
+    public char getPion(int indice){
+        return ligne[indice];
+    }
+    
+    public void afficher(){
+        for(char elem : ligne){
+            System.out.print(elem + " ");
+        }
+        System.out.print("\n");
+    }
+    
     public int[] compare ( Ligne comparant){
         int[] verifTab = new int[taille]; // Ce tableau Si tab[i] = 1 : Bon et bien placé; Si tab[i] = 2 : Bon et mal placé; Si tab[i] = 0 : N'existe pas dans cette ligne
         boolean[] existeTab = new boolean[taille]; // Ce tableau mettra true si la case correspondant à cet indice est présente. Ce tableau permet de ne pas compter plusieurs fois 
+        
         
         for(int i=0; i < taille; i++){ // Initialise les tableaux
             existeTab[i] = false;
@@ -36,6 +49,10 @@ public class Ligne {
             }
         }
         
+        for(int elem : verifTab){
+            System.out.print(elem + " ");
+        }
+        
         // On regarde les éléments existant et mal placés
         for(int i=0; i < taille; i++){
             if(verifTab[i] != 1){ // Si la pièce n'est pas déjà bien placée
@@ -47,6 +64,7 @@ public class Ligne {
                 }
             }
         }
+        System.out.print(verifTab.length);
         return verifTab;
     }
     

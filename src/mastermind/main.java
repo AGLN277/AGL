@@ -9,6 +9,17 @@ public class main {
         String choix;
         
         Scanner sc = new Scanner(System.in);
+        Ligne li1 = new Ligne(4, false);
+        char[] dd = {'R', 'V', 'J', 'B'};
+        li1.setLigne(dd);
+        Ligne li2 = new Ligne(4, true);
+        int[] cmp = li1.compare(li2);
+        li1.afficher();
+
+        for(int elem : cmp){
+            System.out.print(elem + " ");
+        }
+        
         
         do{
             System.out.println("======= MasterMind ======= ");
@@ -21,6 +32,7 @@ public class main {
             choix = sc.nextLine();
             switch(choix){
                 case "1":
+                    
                     break;
                     
                 case "2":      
