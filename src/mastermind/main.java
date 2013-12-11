@@ -13,24 +13,28 @@ public class main {
         do{
             System.out.println("======= MasterMind ======= ");
             System.out.println("1. Ordi vs Ordi");
-            System.out.println("2. Joueur vs ordi");
-            System.out.println("3. Paramètres");
-            System.out.println("4. Quitter\n");
+            System.out.println("2. Joueur vs Ordi");
+            System.out.println("3. Joueur vs Joueur");
+            System.out.println("4. Paramètres");
+            System.out.println("5. Quitter\n");
             
             choix = sc.nextLine();
             switch(choix){
                 case "1":
+                    break;
                     
-                break;
-                case "2":
+                case "2":      
+                    break;
                     
-                break;
                 case "3":
+                    break;
                     
-                break;
-                case "4":
+                case "4":                   
+                    break;
+                    
+                case "5":
                     continuer = false;
-                break;
+                    break;
             }
             
         }while(continuer);
