@@ -12,4 +12,5 @@ package mastermind;
  */
 public class ListeCombinaison {
     
+    ListeCombinaison()
 }
