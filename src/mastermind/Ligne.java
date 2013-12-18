@@ -40,7 +40,7 @@ public class Ligne {
     
     public Ligne(Parametre param, boolean generation){
         this.ligne = new char[param.getTailleLigne()];
-        this.taille = param.getNbCouleurs();
+        this.taille = param.getTailleLigne();
         this.nbCouleurs = param.getNbCouleurs();
         this.listeCouleur = param.getListeCouleur();
         if(generation)
@@ -58,7 +58,7 @@ public class Ligne {
      */
     public Ligne(Parametre param, char[] tab){
         this.ligne = tab;
-        this.taille = param.getNbCouleurs();
+        this.taille = param.getTailleLigne();
         this.nbCouleurs = param.getNbCouleurs();
         this.listeCouleur = param.getListeCouleur();
     }

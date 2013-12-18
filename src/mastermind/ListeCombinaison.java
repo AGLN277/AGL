@@ -36,6 +36,7 @@ public class ListeCombinaison {
                         indice[i-1]++;
                     }
                 }
+                
                 listeCombi.add(new Ligne(param, combinaison));
             }
         }
@@ -49,6 +50,7 @@ public class ListeCombinaison {
         
         for(int i=0; it.hasNext(); i++){
            tmpLigne = it.next();
+
            if(!marqueurVerif.equals(tmpLigne.compare(proposition))){ // Si la combinaison ne correspond pas à la proposition, on la suporime
                it.remove(); // On supprime avec l'iterateur, car c'est plus rapide
            }
@@ -58,7 +60,7 @@ public class ListeCombinaison {
     /*Choisi une combinaison au hasard dans la liste de combinaison restantes */
     public Ligne choixCombi(){
         Random rand = new Random();
-        int indiceAleatoire = rand.nextInt((listeCombi.size()-1)+ 1);
+        int indiceAleatoire = rand.nextInt(listeCombi.size());
         return listeCombi.get(indiceAleatoire); // On prend une combinaison aléatoire dans la liste
     }
 }

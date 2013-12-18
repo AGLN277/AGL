@@ -18,8 +18,8 @@ public class Parametre {
     
     /*Fichier contient le chemin du fichier des paramétres*/
     Parametre(){
-        tailleLigne = 5;
-        nbCouleurs = 6;
+        tailleLigne = 8;
+        nbCouleurs = 8;
         nbCoupMax = 10;
         listeCouleur = new char[] {'R','V','J','B','O','G','M','P','C','T','P','N'};
     }
