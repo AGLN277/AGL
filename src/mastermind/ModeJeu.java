@@ -8,6 +8,7 @@ public class ModeJeu {
     
     public static void OrdiVsOrdi(Parametre param){
         // Faire des statistiques sur plusieurs parties
+        
         Ligne ligneOrdi1 = new Ligne(param, true);
         Ligne ligneOrdi2 = new Ligne(param, false);
         LigneMarqueur liMarq = new LigneMarqueur(param.getTailleLigne());
@@ -23,22 +24,23 @@ public class ModeJeu {
         IA ordi2 = new IA(param);
         
         System.out.print("L'ordi 1 entre une combinaison : ");
+        ligneOrdi1.afficher();
         for(int i=0; i < param.getTailleLigne(); i++){
             System.out.print("* "); // On met des étoiles à la place des coueleurs que l'ordianteur choisi
         }
         System.out.println("\n Ordi 2 : \n");
-        System.out.println("-------------------------------------------------" + param.esp("---"));
+        System.out.println("------------------------------------------------" + param.esp("---"));
         System.out.println("|      Joueur     |   "+esp+"Jeu"+esp+"   |"+esp+"Réponse"+esp+"| Coup |");
-        System.out.println("-------------------------------------------------" + param.esp("---"));
+        System.out.println("------------------------------------------------" + param.esp("---"));
         
         while(!gagne && nbCoup <= nbCoupMax){
             
             System.out.print("| Ordi 2 entre :  | ");
             ligneOrdi2 = ordi2.jouer(liMarq); // L'ordinateur propose une combinaison, pas de souci si liMarq est vide. Tous ces éléments sont initilisés à 0
-            System.out.print("!!!");
+            System.out.print("   ");
             ligneOrdi2.afficher();
-            //liMarq = ligneOrdi1.compare(ligneOrdi2); // On compare la ligne de l'ordi avec la ligne secrète
-            System.out.print("|   ");
+            liMarq = ligneOrdi1.compare(ligneOrdi2); // On compare la ligne de l'ordi avec la ligne secrète
+            System.out.print("  |   ");
             liMarq.afficher();
             System.out.print(esp+"  |   "+ nbCoup+ "  |\n");
             System.out.println("-------------------------------------------------" + param.esp("---"));
