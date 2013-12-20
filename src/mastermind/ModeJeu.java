@@ -31,7 +31,7 @@ public class ModeJeu {
         
         while(!gagne && nbCoup <= param.getNbCoupMax()){
             
-            System.out.print("\b\b\b| Ordi 2 entre :  | ");
+            System.out.print("| Ordi 2 entre :  | ");
             ligneOrdi2 = ordi2.jouer(liMarq); // L'ordinateur propose une combinaison, pas de souci si liMarq est vide. Tous ces éléments sont initilisés à 0
             System.out.print("   ");
             ligneOrdi2.afficher();
@@ -67,40 +67,45 @@ public class ModeJeu {
         
         IA ordi = new IA(param);
         
-        do{
-            continuer = true;
-            System.out.println("Joueur : Entrez une combinaison("+ param.getTailleLigne() + " couleurs) : ");
-            rep = sc.nextLine();
-
-            if(rep.length() > param.getTailleLigne()){
-                System.out.println("Vous avez entré trop de couleurs.");
-                continuer = false;
-            }
-            else if(rep.length() < param.getTailleLigne()){
-                System.out.println("Vous n'avez pas entré assez de couleurs.");
-                continuer = false;
-            }
-
-        }while(!continuer);
-        ligneJoueur.setLigne(rep.toCharArray()); // On met la ligne entrée dans la ligne joueur
-
-        while(!gagne && nbCoup <=param.getNbCoupMax()){
-            
-            System.out.println("Ordi joue (coup "+nbCoup+"): ");
-            ligneOrdi = ordi.jouer(liMarq); // L'ordinateur propose une combinaison, pas de souci si liMarq est vide. Tous ces éléments sont initilisés à 0
+        System.out.println("\n Ordi : \n");
+        System.out.println("------------------------------------------------" + param.esp("---"));
+        System.out.println("|      Joueur     |   "+esp+"Jeu"+esp+"   |"+esp+"Réponse"+esp+"| Coup |");
+        System.out.println("------------------------------------------------" + param.esp("---"));
+        
+        while(!gagne && nbCoup <= param.getNbCoupMax()){
+           do{
+                continuer = true;
+                System.out.println("Joueur : Entrez une combinaison("+ param.getTailleLigne() + " couleurs) : ");
+                rep = sc.nextLine();
+                
+                if(rep.length() > param.getTailleLigne()){
+                    System.out.println("Vous avez entré trop de couleurs.");
+                    continuer = false;
+                }
+                else if(rep.length() < param.getTailleLigne()){
+                    System.out.println("Vous n'avez pas entré assez de couleurs.");
+                    continuer = false;
+                }
+            }while(!continuer);
+           
+            System.out.print("| Vous avez entrez :  | ");
+            ligneJoueur = ordi.jouer(liMarq); // L'ordinateur propose une combinaison, pas de souci si liMarq est vide. Tous ces éléments sont initilisés à 0
+            System.out.print("   ");
             ligneOrdi.afficher();
             liMarq = ligneJoueur.compare(ligneOrdi); // On compare la ligne de l'ordi avec la ligne secrète
+            System.out.print("  |   ");
             liMarq.afficher();
+            System.out.print(esp+"  |   "+nbCoup+ "  |\n");
+            System.out.println("-------------------------------------------------" + param.esp("---"));
             
             if(liMarq.gagne()){
-                System.out.println("L'ordinateur a gagné, en "+ nbCoup+" coups.");
+                System.out.println("L'ordi2 a gagné, en "+ nbCoup+" coups.");
                 gagne = true;
             }
             else if(nbCoup > param.getNbCoupMax()){
-                System.out.println("L'ordinateur a perdu !");
+                System.out.println("L'ordi2 a perdu ! le réponse était : " + ligneOrdi1.toString());
             }
             nbCoup++;
-            System.out.println("\n");
         }
         
     }
@@ -128,18 +133,17 @@ public class ModeJeu {
         while ( nbCoup > 0 && gagne == false){
             do{
                 continuer = true;
-                System.out.println("Joueur : Entrez une combinaison("+ taille + " couleurs) : ");
+                System.out.println("Joueur : Entrez une combinaison("+ param.getTailleLigne() + " couleurs) : ");
                 rep = sc.nextLine();
                 
-                if(rep.length() > taille){
+                if(rep.length() > param.getTailleLigne()){
                     System.out.println("Vous avez entré trop de couleurs.");
                     continuer = false;
                 }
-                else if(rep.length() < taille){
+                else if(rep.length() < param.getTailleLigne()){
                     System.out.println("Vous n'avez pas entré assez de couleurs.");
                     continuer = false;
                 }
-                
             }while(!continuer);
             
             // On affecte la valeur entrée à la ligne du joueur
