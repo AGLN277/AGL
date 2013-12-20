@@ -14,7 +14,6 @@ public class ModeJeu {
         LigneMarqueur liMarq = new LigneMarqueur(param.getTailleLigne());
         
         String esp = param.esp(" "); // On récupère le nombre d'espace qu'il faut pour l'affichage
-        int nbCoupMax = 10;
         int nbCoup = 1;
         Scanner sc = new Scanner(System.in);
         String rep;
@@ -25,31 +24,28 @@ public class ModeJeu {
         
         System.out.print("L'ordi 1 entre une combinaison : ");
         ligneOrdi1.afficher();
-        for(int i=0; i < param.getTailleLigne(); i++){
-            System.out.print("* "); // On met des étoiles à la place des coueleurs que l'ordianteur choisi
-        }
         System.out.println("\n Ordi 2 : \n");
         System.out.println("------------------------------------------------" + param.esp("---"));
         System.out.println("|      Joueur     |   "+esp+"Jeu"+esp+"   |"+esp+"Réponse"+esp+"| Coup |");
         System.out.println("------------------------------------------------" + param.esp("---"));
         
-        while(!gagne && nbCoup <= nbCoupMax){
+        while(!gagne && nbCoup <= param.getNbCoupMax()){
             
-            System.out.print("| Ordi 2 entre :  | ");
+            System.out.print("\b\b\b| Ordi 2 entre :  | ");
             ligneOrdi2 = ordi2.jouer(liMarq); // L'ordinateur propose une combinaison, pas de souci si liMarq est vide. Tous ces éléments sont initilisés à 0
             System.out.print("   ");
             ligneOrdi2.afficher();
             liMarq = ligneOrdi1.compare(ligneOrdi2); // On compare la ligne de l'ordi avec la ligne secrète
             System.out.print("  |   ");
             liMarq.afficher();
-            System.out.print(esp+"  |   "+ nbCoup+ "  |\n");
+            System.out.print(esp+"  |   "+nbCoup+ "  |\n");
             System.out.println("-------------------------------------------------" + param.esp("---"));
             
             if(liMarq.gagne()){
-                System.out.println("L'ordi2 a gagné, en "+ nbCoup+".");
+                System.out.println("L'ordi2 a gagné, en "+ nbCoup+" coups.");
                 gagne = true;
             }
-            else if(nbCoup > nbCoupMax){
+            else if(nbCoup > param.getNbCoupMax()){
                 System.out.println("L'ordi2 a perdu ! le réponse était : " + ligneOrdi1.toString());
             }
             nbCoup++;
@@ -58,14 +54,13 @@ public class ModeJeu {
     
     /*Le joueur donne une combinaison au départ et l'ordinateur doit le trouver dans un certain nombre de coup*/
     public static void OrdiVsJoueur(Parametre param){
-        int taille = 4;
         Ligne ligneOrdi = new Ligne(param, true);
         Ligne ligneJoueur = new Ligne(param, false);
-        LigneMarqueur liMarq = new LigneMarqueur(taille);
-        
-        int nbCoupMax = 10;
-        int nbCoup = 1;
+        LigneMarqueur liMarq = new LigneMarqueur(param.getTailleLigne());
         Scanner sc = new Scanner(System.in);
+        
+        String esp = param.esp(" "); // On récupère le nombre d'espace qu'il faut pour l'affichage
+        int nbCoup = 1;
         String rep;
         boolean continuer;
         boolean gagne = false;
@@ -74,14 +69,14 @@ public class ModeJeu {
         
         do{
             continuer = true;
-            System.out.println("Joueur : Entrez une combinaison("+ taille + " couleurs) : ");
+            System.out.println("Joueur : Entrez une combinaison("+ param.getTailleLigne() + " couleurs) : ");
             rep = sc.nextLine();
 
-            if(rep.length() > taille){
+            if(rep.length() > param.getTailleLigne()){
                 System.out.println("Vous avez entré trop de couleurs.");
                 continuer = false;
             }
-            else if(rep.length() < taille){
+            else if(rep.length() < param.getTailleLigne()){
                 System.out.println("Vous n'avez pas entré assez de couleurs.");
                 continuer = false;
             }
@@ -89,7 +84,7 @@ public class ModeJeu {
         }while(!continuer);
         ligneJoueur.setLigne(rep.toCharArray()); // On met la ligne entrée dans la ligne joueur
 
-        while(!gagne && nbCoup <= nbCoupMax){
+        while(!gagne && nbCoup <=param.getNbCoupMax()){
             
             System.out.println("Ordi joue (coup "+nbCoup+"): ");
             ligneOrdi = ordi.jouer(liMarq); // L'ordinateur propose une combinaison, pas de souci si liMarq est vide. Tous ces éléments sont initilisés à 0
@@ -101,7 +96,7 @@ public class ModeJeu {
                 System.out.println("L'ordinateur a gagné, en "+ nbCoup+" coups.");
                 gagne = true;
             }
-            else if(nbCoup > nbCoupMax){
+            else if(nbCoup > param.getNbCoupMax()){
                 System.out.println("L'ordinateur a perdu !");
             }
             nbCoup++;
@@ -131,7 +126,6 @@ public class ModeJeu {
         
         
         while ( nbCoup > 0 && gagne == false){
-
             do{
                 continuer = true;
                 System.out.println("Joueur : Entrez une combinaison("+ taille + " couleurs) : ");
