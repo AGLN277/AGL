@@ -1,7 +1,7 @@
 //Rentrer une combinaison de taille n au lieu d'une combinaison de taille m avec n>m
 // Coucou ! recoucou
 
-/*
+
 package tests;
 
 import static junit.framework.Assert.assertEquals;
@@ -15,7 +15,7 @@ public class tests extends TestCase{
   Parametre param;
   char[] chaine1= new char[] {'V','V','R'};
   char[] chaine2= new char[] {'V','R','R'};
-  int[] tabTest = new int[] {1,2,3};
+  int[] tabTest = new int[] {1,2,1}; // C'est cette combinnaison qui
   Ligne ligne1 = new Ligne(param, chaine1);
   Ligne ligne2 = new Ligne(param, chaine2);
   LigneMarqueur liMarq1 = new LigneMarqueur(param.getTailleLigne());
@@ -24,9 +24,9 @@ public class tests extends TestCase{
  public void testCompare (){
   
   liMarq1 = ligne1.compare(ligne2);  
-  assertEquals(liMarq1,liMarq2);
+  assertEquals(liMarq1, liMarq2);
   
  }
   
    
-}*/
+}
