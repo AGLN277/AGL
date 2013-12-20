@@ -9,7 +9,7 @@ import java.util.Random;
  * Une ligne contient :</p>
  * <ul>
  *     <li>Une taille qui est le nombre de caractère</li>
- *     <li>Un nombre de couleur qui est le choix des couleurs </li>
+ *     <li>Un nombre de couleur qui est le nombre de couleurs différentes possibles </li>
  * </ul>
  * 
  * 
@@ -94,10 +94,7 @@ public class Ligne {
      */
     @Override
     public String toString(){
-        String str = "";
-        for(int i=0; i < taille; i++){
-            str += ligne[i]+" ";
-        }
+        String str = new String(ligne);
         return str;
     }
     
