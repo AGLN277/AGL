@@ -11,7 +11,7 @@ import mastermind.Parametre;
 import mastermind.LigneMarqueur;
 
 
-public class tests {
+public class tests extends TestCase{
   Parametre param;
   char[] chaine1= new char[] {'V','V','R'};
   char[] chaine2= new char[] {'V','R','R'};
@@ -29,6 +29,4 @@ public class tests {
  }
   
    
-}
-
-*/
+}*/
