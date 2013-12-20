@@ -99,11 +99,11 @@ public class ModeJeu {
             System.out.println("-------------------------------------------------" + param.esp("---"));
             
             if(liMarq.gagne()){
-                System.out.println("L'ordi2 a gagné, en "+ nbCoup+" coups.");
+                System.out.println("L'ordi a gagné, en "+ nbCoup+" coups.");
                 gagne = true;
             }
             else if(nbCoup > param.getNbCoupMax()){
-                System.out.println("L'ordi2 a perdu ! le réponse était : " + ligneOrdi1.toString());
+                System.out.println("L'ordi2 a perdu ! le réponse était : " + ligneJoueur.toString());
             }
             nbCoup++;
         }
