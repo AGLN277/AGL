@@ -6,10 +6,6 @@
 
 package mastermind;
 
-/**
- *
- * @author Sylvio
- */
 public class Parametre {
     private int tailleLigne;
     private int nbCouleurs;
